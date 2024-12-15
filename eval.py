@@ -1,9 +1,9 @@
 from magent2.environments import battle_v4
-from torch_model import QNetwork
-from final_torch_model import finalQNetwork
 import torch
 import numpy as np
 from model import EnhancedQNetwork
+from torch_model import QNetwork
+from final_torch_model import finalQNetwork
 import imageio
 try:
     from tqdm import tqdm
