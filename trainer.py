@@ -149,11 +149,7 @@ class ImprovedTrainer:
                 loss = self.update_model(dataloader)
                 
                 if episode % self.update_target_every == 0:
-                    target_net_state_dict = self.target_network.state_dict()
-                    policy_net_state_dict = self.q_network.state_dict()
-                    for key in policy_net_state_dict:
-                        target_net_state_dict[key] = policy_net_state_dict[key]*self.TAU + target_net_state_dict[key]*(1-self.TAU)
-                    self.target_network.load_state_dict(target_net_state_dict)
+                    self.target_network.load_state_dict(self.q_network.state_dict())
     
             # Calculate metrics and update parameters
             max_reward = max(reward_for_agent.values())
