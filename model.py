@@ -4,7 +4,6 @@ import torch.nn as nn
 class EnhancedQNetwork(nn.Module):
     def __init__(self, observation_shape, action_shape):
         super().__init__()
-        # Fix the input dimensionality issue
         self.cnn = nn.Sequential(
             nn.Conv2d(observation_shape[-1], 13, kernel_size=3),
             nn.ReLU(),

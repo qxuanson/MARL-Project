@@ -56,7 +56,7 @@ def eval():
         env.observation_space("blue_0").shape,
         env.action_space("blue_0").n,
     ).to(device)
-    blue_model.load_state_dict(torch.load("best_model1.pt", weights_only=True, map_location="cpu"))
+    blue_model.load_state_dict(torch.load("best_model.pt", weights_only=True, map_location="cpu"))
 
     def blue_policy(env, agent, obs):
         observation = torch.FloatTensor(obs).permute(2, 0, 1).unsqueeze(0).to(device)
