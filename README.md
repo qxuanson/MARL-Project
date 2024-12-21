@@ -37,7 +37,7 @@ In this final project, we will develop and train a reinforcement learning (RL) a
 </table>
 
 ## Installation
-Checkout a [Colab notebook]([https://colab.research.google.com/drive/1qmx_NCmzPlc-atWqexn2WueqMKB_ZTxc?usp=sharing](https://colab.research.google.com/drive/1_54RWVrKyaG23rwqDmEIquRcbGqaY3uJ?usp=sharing)) for running this demo.
+Checkout a [Colab notebook](https://colab.research.google.com/drive/1_54RWVrKyaG23rwqDmEIquRcbGqaY3uJ?usp=sharing) for running this demo.
 
 ## References
 
