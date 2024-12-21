@@ -7,7 +7,8 @@ from magent2.environments import battle_v4
 import time
 from model import EnhancedQNetwork
 from replay_buffer import ReplayBuffer
-
+import matplotlib.pyplot as plt
+from collections import defaultdict
 from random import random
 
 class ImprovedTrainer:
@@ -29,6 +30,7 @@ class ImprovedTrainer:
         self.epsilon_decay = 0.97
         self.update_target_every = 1
         self.TAU = 0.005
+        self.metrics = defaultdict(list)
         
     def select_action(self, observation, agent):
         if random() <= self.epsilon:
@@ -147,6 +149,7 @@ class ImprovedTrainer:
             if len(self.replay_buffer) >= batch_size:
                 dataloader = DataLoader(self.replay_buffer, batch_size=batch_size, shuffle=True)
                 loss = self.update_model(dataloader)
+                self.metrics['losses'].append(loss)
                 
                 if episode % self.update_target_every == 0:
                     self.target_network.load_state_dict(self.q_network.state_dict())
@@ -154,6 +157,10 @@ class ImprovedTrainer:
             # Calculate metrics and update parameters
             max_reward = max(reward_for_agent.values())
             avg_reward = total_reward / len(blue_agents)
+
+            self.metrics['episodes'].append(episode)
+            self.metrics['total_rewards'].append(total_reward)
+            self.metrics['avg_reward'].append(avg_reward)
             
             if avg_reward > best_reward:
                 best_reward = avg_reward
@@ -172,6 +179,31 @@ class ImprovedTrainer:
             self.epsilon = max(self.epsilon * self.epsilon_decay, self.epsilon_min)
         end_time = time.time()
         print(f"Thời gian thực thi: {(end_time - start_time):.6f} giây")
+
+    def plot_metrics(self):
+        plt.figure(figsize=(20, 12))
+
+        # Reward
+        plt.subplot(2, 3, 1)
+        plt.plot(self.metrics['episodes'], self.metrics['total_rewards'], 'b-', label='Total Reward')
+        plt.plot(self.metrics['episodes'], self.metrics['avg_reward'], 'r--', label='Avg Reward')
+        plt.title('Rewards over Episodes')
+        plt.xlabel('Episode')
+        plt.ylabel('Reward')
+        plt.legend()
+        plt.grid(True)
+
+        #Loss
+        plt.subplot(2, 3, 2)
+        plt.plot(self.metrics['episodes'], self.metrics['losses'], 'g-')
+        plt.title('Loss over Episodes')
+        plt.xlabel('Episode')
+        plt.ylabel('Loss')
+        plt.grid(True)
+
+        plt.tight_layout()  
+        plt.savefig('metrics_plot.png', dpi=300)  
+        plt.close() 
         
             
             
@@ -179,3 +211,4 @@ if __name__ == "__main__":
     env = battle_v4.env(map_size=45, render_mode=None)
     trainer = ImprovedTrainer(env, env.observation_space("blue_0").shape, env.action_space("blue_0").n)
     trainer.training()
+    trainer.plot_metrics()
