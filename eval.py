@@ -83,7 +83,7 @@ def eval():
 
                 n_kill[agent_team] += (
                     reward > 4.5
-                )  # This assumes default reward settups
+                ) 
                 if agent_team == "red":
                     red_reward += reward
                 else:
