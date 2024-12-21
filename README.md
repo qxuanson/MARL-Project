@@ -17,9 +17,9 @@ In this final project, we will develop and train a reinforcement learning (RL) a
 ## Result
 
 <p align="center">
-  <img src="video/random.gif" width="300" alt="random agent" />
-  <img src="video/pretrain.gif" width="300" alt="pretrain agent" />
-  <img src="video/fianl.gif" width="300" alt="final agent" />
+  <img src="video/random.gif" width="250" alt="random agent" />
+  <img src="video/pretrain.gif" width="250" alt="pretrain agent" />
+  <img src="video/fianl.gif" width="250" alt="final agent" />
 </p>
 
 ## Installation
