@@ -1,5 +1,8 @@
 # MAgent2 RL Final Project
 
+## Mô hình:
+[best_model1.pt](/best_model1.pt)
+
 ## Thành viên nhóm
 | Họ và tên       | Mã sinh viên |
 | ----------------- | -------------- | 
