@@ -16,11 +16,22 @@ In this final project, we will develop and train a reinforcement learning (RL) a
 
 ## Result
 
-<p align="center">
-  <img src="video/random.gif" width="250" alt="random agent" />
-  <img src="video/pretrain.gif" width="250" alt="pretrain agent" />
-  <img src="video/fianl.gif" width="250" alt="final agent" />
-</p>
+<table align="center">
+  <tr>
+    <td align="center">
+      <img src="video/random.gif" width="250" alt="random agent" /><br />
+      <b>Random Agent</b>
+    </td>
+    <td align="center">
+      <img src="video/pretrain.gif" width="250" alt="pretrain agent" /><br />
+      <b>Pre-trained Agent</b>
+    </td>
+    <td align="center">
+      <img src="video/fianl.gif" width="250" alt="final agent" /><br />
+      <b>Final Agent</b>
+    </td>
+  </tr>
+</table>
 
 ## Installation
 Checkout a [Colab notebook](https://colab.research.google.com/drive/1qmx_NCmzPlc-atWqexn2WueqMKB_ZTxc?usp=sharing) for running this demo.
